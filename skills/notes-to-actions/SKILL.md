@@ -1,6 +1,6 @@
 ---
 name: notes-to-actions
-description: Use when the user asks to turn meeting notes into actions, pull the action items or to-dos out of notes, work out who agreed to what, write up a standup or call, get the follow-ups from a transcript, or says things like "what do I actually need to do after this meeting", "turn these notes into a task list", "who owns what from this call", or "extract the action items". Also use for notes from a 1:1, standup, client call, retro, or any discussion that produced things somebody has to do.
+description: Use when the user asks to turn meeting notes into actions or a task list, pull the action items or to-dos out of notes, work out who agreed to what or who owns what, or find the follow-ups from a meeting or transcript. Triggers on phrasings like "turn these notes into a task list", "extract the action items", "what do I actually need to do after this meeting", "who owns what from this call", "what are the follow-ups". Works on notes from a meeting, 1:1, standup, client call or retro. Do NOT use for a general summary or recap of a meeting, for a weekly or multi-meeting report, or for recording a decision - those are different jobs.
 ---
 
 # Turning meeting notes into actions
@@ -36,13 +36,25 @@ and nobody finds out until the deadline passes.
    task list three days from now with none of the meeting in their head.
    "Follow up with them" is not an action. "Email Priya the revised Q3 forecast" is.
 
-5. **Resolve relative dates against the meeting date** if the notes give one. "By
-   Friday" in notes dated Tuesday 12 August becomes `2026-08-15`. If there is no
-   meeting date, keep the words as written and flag it — do not assume today.
+5. **Handle dates by how precise they are.** There are three kinds and they are
+   treated differently:
 
-6. **List anything needing a human decision** under Needs a human. Anything
-   `UNASSIGNED`, any `NO DATE`, and anything where you were genuinely unsure
-   whether it was an action at all.
+   - **Precise and relative** — "by Friday", "next Tuesday", "in two weeks", "end of
+     the month". Resolve against the meeting date if the notes give one:
+     "by Friday" in notes dated Tuesday 12 August becomes `2026-08-15`. If there is
+     no meeting date, keep the words and flag it. Never assume today.
+   - **Vague** — "early next week", "soon", "ASAP", "at some point", "before too
+     long". These do **not** resolve to a date, even when a meeting date is given.
+     Keep the words in the Due column and flag it under Needs a human. "Early next
+     week" could mean three different days to three different people.
+   - **Absolute** — "by 15 August". Use as given.
+
+6. **List anything needing a human decision** under Needs a human. Every entry starts
+   either with an action number (`Action 2: ...`) when it is about a row in the table,
+   or with `General:` when it is not tied to one — for example something half-agreed
+   that you could not justify making an action, or a missing meeting date. Include
+   every `UNASSIGNED`, every `NO DATE`, every vague deadline, and anything you were
+   genuinely unsure about.
 
 7. **Never drop something because it was unclear.** An unclear item goes in the
    output marked unclear. Silence loses information; a flag does not.
@@ -80,8 +92,9 @@ nothing.
 
 ## Needs a human
 
-- Action 2 has no owner. Somebody must claim it.
-- Action 2 has no deadline.
+- Action 2: no owner named. Somebody must claim it.
+- Action 2: no deadline.
+- General: no meeting date in the notes, so "by Friday" could not be resolved.
 
 ## Decisions mentioned
 
@@ -91,6 +104,16 @@ nothing.
 
 - Pricing review, raised but nobody committed.
 ```
+
+### When the notes are too thin to work with
+
+If the notes are so fragmentary that you cannot tell whether anything was actually
+agreed, do not produce a confident table. Open with one plain sentence saying so,
+then give the same four sections with whatever little you have:
+
+> These notes are too fragmentary to tell what was agreed. I have listed the one
+> possible action below, but none of it is confirmed and all of it needs checking
+> with someone who was in the room.
 
 ## What it must never do
 
@@ -134,8 +157,8 @@ nothing.
 
 ## Needs a human
 
-- Action 2 has no owner named. It was outstanding last week too.
-- Action 2 has no deadline.
+- Action 2: no owner named. It was outstanding last week too.
+- Action 2: no deadline.
 
 ## Decisions mentioned
 
